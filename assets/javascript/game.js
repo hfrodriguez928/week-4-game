@@ -35,9 +35,6 @@ var getRandom = function (min, max) {
 
 var startgame = function () {
     // reset current score
-    currentScore = 0;
-    //adds to score
-    $('#yourScore').text(counter);
 
     // new target score
     targetScore = getRandom(19, 120);
@@ -74,24 +71,28 @@ $("#red").click(function () {
 $("#yellow").click(function () {
     addValue(crystal.yellow);
 });
+        
+     $('#yourScore').text(counter);
 
-function roundComplete(){
-  console.log("Win Count: " + winCount + " | Lost Count: " + lostCount);
+            if (counter == targetScore){
+              $('#status').text('You won!!!!');
+              wins ++;
+              $('#winCounter').text(wins);
+              console.log(wins)
+              $('#crystal').empty();
+              newCrystals();
+              newGame();
+                
+            } else if ( counter > targetScore){
+                $('#status').text('You lost!')
+                losses ++;
+                $('#lossCounter').text(losses);
+                console.log(losses)
+                $('#crystal').empty();
+                newCrystals();
+                newGame();
+            }
+        };
+    }
 
-if(currentScore.toString() === targetScore.toString()){
-  winCount++;
-  alert("You Won!");
-
-  document.getElementById("winCount").innerHTML = winCount;
-  startGame();
-}
-
-else if (guessesLeft === 0) {
-  lossCount++;
-  alert("You Lost!")
-
-  document.getElementById("lossCount").innerHTML = lossCount;
-  startGame();
-
-  startGame();
-}}
+};

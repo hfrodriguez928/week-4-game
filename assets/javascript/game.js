@@ -46,6 +46,9 @@ var startgame = function () {
     crystal.red.value = getRandom(1, 12);
     crystal.yellow.value = getRandom(1, 12);
 
+$("#your-score").html(currentScore);
+$("#target-score").html(targetScore);
+
 console.log("Target Score " + targetScore);
 console.log("Blue " + crystal.blue.value  + "| Green: " + crystal.green.value+ "| Red: " + crystal.red.value+ 
 "| Yellow: " + crystal.yellow.value );
@@ -59,16 +62,34 @@ $("#blue").click(function () {
 });
 
 $("#green").click(function () {
-    alert("Tester");
+    addValue(crystal.green);
 });
 
 $("#red").click(function () {
-    alert("Testerr");
+    addValue(crystal.red);
 });
 
 $("#yellow").click(function () {
-    alert("Testery");
+    addValue(crystal.yellow);
 });
 
 function roundComplete(){
   console.log("Win Count: " + winCount + " | Lost Count: " + lostCount);
+
+if(currentScore.toString() === targetScore.toString()){
+  winCount++;
+  alert("You Won!");
+
+  document.getElementById("winCount").innerHTML = winCount;
+  startGame();
+}
+
+else if (guessesLeft === 0) {
+  lossCount++;
+  alert("You Lost!")
+
+  document.getElementById("lossCount").innerHTML = lossCount;
+  startGame();
+
+  startGame();
+}

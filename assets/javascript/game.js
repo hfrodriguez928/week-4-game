@@ -1,18 +1,18 @@
 var crystal = {
     blue: {
-        name: "Blue",
+        name: "blue",
         value: 0
     },
     green: {
-        name: "Green",
+        name: "green",
         value: 0
     },
     red: {
-        name: "Red",
+        name: "red",
         value: 0
     },
     yellow: {
-        name: "Yellow",
+        name: "yellow",
         value: 0
     }
 };
@@ -36,6 +36,8 @@ var getRandom = function (min, max) {
 var startgame = function () {
     // reset current score
     currentScore = 0;
+    //adds to score
+    $('#yourScore').text(counter);
 
     // new target score
     targetScore = getRandom(19, 120);
@@ -50,8 +52,8 @@ $("#your-score").html(currentScore);
 $("#target-score").html(targetScore);
 
 console.log("Target Score " + targetScore);
-console.log("Blue " + crystal.blue.value  + "| Green: " + crystal.green.value+ "| Red: " + crystal.red.value+ 
-"| Yellow: " + crystal.yellow.value );
+console.log("blue " + crystal.blue.value  + "| green: " + crystal.green.value+ "| red: " + crystal.red.value+ 
+"| yellow: " + crystal.yellow.value );
 
 }
 
@@ -92,4 +94,4 @@ else if (guessesLeft === 0) {
   startGame();
 
   startGame();
-}
+}}
